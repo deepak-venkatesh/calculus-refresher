@@ -1,0 +1,16 @@
+# Ignore everything
+*
+
+# But allow directories to be traversed
+!*/
+
+# Keep LaTeX source and generated PDF
+!*.tex
+!*.pdf
+
+# Keep this file
+!.gitignore
+
+# Optional: keep README and license
+!README.md
+!LICENSE

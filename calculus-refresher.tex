@@ -19,13 +19,15 @@
 \tableofcontents
 \newpage
 
-\section{Personal Notes}
+\noindent\textbf{Personal Notes}\\
 
-These notes are a concise collection of derived problems from the examples from Calculus books mentioned in the references.
+\noindent These notes are a concise collection of derived problems inspired by the examples from the Calculus books by Marsden and Weinstein.\\
+
+\noindent Chapter names in these notes follows the chapter headings in the book.
 
 \newpage
 
-\section{Calculus I}
+\section{Derivatives and Limits}
 
 \subsection{Reading Limits from a Graph}
 
@@ -215,28 +217,176 @@ This will be simply 0, since denominator tends to 0 and the resultant fraction w
 \lim_{x\to -\infty} \dfrac{4x^2 - 5x + 3}{x^2 + 2} = \lim_{x\to -\infty} \dfrac{4 - 5/x + 3/x^2}{1 + 2/x^2} = 4
 \]
 
+\subsection{Find $\displaystyle \lim_{x\to 3} \dfrac{-5x}{x^2 - 6x + 9}$}
+\subsection*{Answer}
+\[
+\lim_{x\to 3} \dfrac{-5x}{x^2 - 6x + 9} = \lim_{x\to 3} \dfrac{-5x}{(x - 3)^2} = -\infty
+\]
+
+As $x$ reaches 3, the numerator tends to $-15$ and the denominator is very small. So at $x = -15$ we get a very large value 
+which is negative $\infty$. Something like below. Ideally I should plot these in Python but I am using LLMs to generate tikz figures quickly. 
+So please verify real plots when we have to truly plot graphs.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+
+% Axes
+\draw[->] (-1.5,0) -- (7.5,0) node[right] {$x$};
+\draw[->] (0,-5.5) -- (0,2) node[above] {$y$};
+
+% x-axis ticks
+\foreach \x in {1,2,3,4,5,6,7}
+  \draw (\x,0.08) -- (\x,-0.08) node[below] {$\x$};
+
+% y-axis ticks
+\foreach \y in {-1,-2,-3,-4,-5,1}
+  \draw (0.08,\y) -- (-0.08,\y) node[left] {$\y$};
+
+% Vertical asymptote x=3
+\draw[dashed] (3,-5.5) -- (3,2);
+\node[above right] at (3,1.4) {$x=3$};
+
+% Left branch
+\draw[thick]
+  plot[smooth] coordinates {
+    (0,0)
+    (0.5,-0.2)
+    (1,-0.6)
+    (1.5,-1.2)
+    (2,-2.5)
+    (2.3,-4)
+    (2.5,-5.2)
+  };
+
+% Right branch
+\draw[thick]
+  plot[smooth] coordinates {
+    (3.5,-5.2)
+    (3.7,-4)
+    (4,-2.5)
+    (4.5,-1.5)
+    (5,-1.0)
+    (6,-0.55)
+    (7,-0.35)
+  };
+
+% Label
+\node at (5.6,-4.6) {$y=\dfrac{-5x}{(x-3)^2}$};
+
+\end{tikzpicture}
+\end{center}
+
+\subsection{Find $\displaystyle \lim_{x\to 0} \dfrac{5x + 3}{x}$}
+\subsection*{Answer}
+\[
+\lim_{x\to 0} \dfrac{5x + 3}{x} = \lim_{x\to 0} 5 + \frac{3}{x}
+\]
+
+As $x \to 0$ from the positive side of $x$ the value of $\frac{3}{x}$ becomes very large towards $+\infty$.
+Similarly from the negative side of $x$ the value becomes $-\infty$. Thus limit actually does not exist. 
+If we were computing one sided limits we could get the values. The graph shows the curve.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+
+% Axes
+\draw[->] (-4.5,0) -- (4.5,0) node[right] {$x$};
+\draw[->] (0,-8.5) -- (0,16.5) node[above] {$y$};
+
+% x-axis ticks
+\foreach \x in {-4,-3,-2,-1,1,2,3,4}
+  \draw (\x,0.12) -- (\x,-0.12) node[below] {$\x$};
+
+% y-axis ticks
+\foreach \y in {-8,-4,4,5,8,12,16}
+  \draw (0.12,\y) -- (-0.12,\y) node[left] {$\y$};
+
+% Horizontal asymptote y=5
+\draw[dashed] (-4.2,5) -- (4.2,5);
+\node[right] at (4.2,5) {$y=5$};
+
+% Left branch
+\draw[thick]
+  plot[smooth] coordinates {
+    (-4,4.25)
+    (-3,4)
+    (-2,3.5)
+    (-1.5,3)
+    (-1,2)
+    (-0.75,1)
+    (-0.6,0)
+    (-0.5,-1)
+    (-0.4,-2.5)
+    (-0.3,-5)
+    (-0.25,-7)
+    (-0.22,-8)
+  };
+
+% Right branch
+\draw[thick]
+  plot[smooth] coordinates {
+    (0.22,18)
+    (0.25,17)
+    (0.3,15)
+    (0.4,12.5)
+    (0.5,11)
+    (0.75,9)
+    (1,8)
+    (1.5,7)
+    (2,6.5)
+    (3,6)
+    (4,5.75)
+  };
+
+% Label
+\node at (2.4,13.5) {$y=\dfrac{5x+3}{x}$};
+
+\end{tikzpicture}
+\end{center}
+
+\subsection{Compute $(1.05)^2$}
+\subsection*{Answer}
+
+\subsection{Compute $\sqrt{256.03}$}
+\subsection*{Answer}
+
+\subsection{Compute $\sqrt{257}$}
+\subsection*{Answer}
+
+\subsection{Compute $\sqrt{255.72}$}
+\subsection*{Answer}
+
+\subsection{Compute $\sqrt{255}$}
+\subsection*{Answer}
+
+\subsection{Compute $\dfrac{1}{\sqrt{0.99} + 0.99^2 + 0.99}$}
+\subsection*{Answer}
+
+
+\newpage
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\section{Rates of Change and the Chain Rule}
+\section{Graphing and Maximum - Minimum Problems}
+\section{The Integral}
+\section{Trigonometric Functions}
+\section{Exponentials and Logarithms}
+\section{Basic Methods of Integration}
+\section{Differential Equations}
+\section{Applications of Integration}
+\section{Further Techniques and Applications of Integration}
+\section{Limits, L'H\^{o}pital's Rule, and Numerical Methods}
+\section{Infinite Series}
+\section{Vectors}
+\section{Curves and Surfaces}
+\section{Partial Derivatives}
+\section{Gradients, Maxima and Minima}
+\section{Multiple Integration}
+\section{Vector Analysis}
 
 
 
@@ -326,6 +476,6 @@ This will be simply 0, since denominator tends to 0 and the resultant fraction w
 Marsden, Jerrold E. and Alan Weinstein,
 \textit{Calculus I, II, III}.
 
-\url{https://www.cds.caltech.edu/~marsden/volume/Calculus/}
+\noindent\url{https://www.cds.caltech.edu/~marsden/volume/Calculus/}
 
 \end{document}
